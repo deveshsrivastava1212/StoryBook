@@ -7,6 +7,12 @@ const Story = require('../models/StoryModel')
 //routes /stories/add
 router.get('/add', ensureAuth, (req,res) => {
     res.render('stories/add')
+    // try {
+    //     const title = req.body.title;
+    //     const
+    // } catch (err) {
+        
+    // }
 })
 
 module.exports = router;
