@@ -7,3 +7,12 @@ p{
     margin-top: 50px;
     text-align: center;
 }
+
+/* .fa-book-reader:hover:before {
+    content: attr(data-hover);
+    -webkit-transform: translate(-150%,0);
+    -moz-transform: translate(-150%,0);
+    -ms-transform: translate(-150%,0);
+    -o-transform: translate(-150%,0);
+    transform: translate(-150%,0);
+} */
