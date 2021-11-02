@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const User = require('./userSchema')
 const storySchema = new mongoose.Schema({
     title: {
         type: String,
@@ -18,11 +18,14 @@ const storySchema = new mongoose.Schema({
     },
     user: {
         type: mongoose.Schema.Types.ObjectID,
-        ref: 'userSchema'
+        ref: User
     },
     createdAt: {
         type: Date,
         default: Date.now(),
+    },
+    comment : {
+        type: String
     }
 
 })

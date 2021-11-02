@@ -5,6 +5,7 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const methodOverride = require('method-override');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')
 const connect_DB = require('./config/db')
@@ -18,13 +19,35 @@ const PORT = process.env.PORT || 3000
 connect_DB()
 
 const app = express();
+
+//body parser
+app.use(express.urlencoded({extended: false}))
+app.use(express.json());
+
+//Method Override
+app.use(methodOverride(function (req, res) {
+    if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+      // look in urlencoded POST bodies and delete it
+      let method = req.body._method
+      delete req.body._method
+      return method
+    }
+}))
+
 if (process.env.NODE_ENV == 'development') {
     app.use(morgan('dev'))
 }
 
 
 //handlebars
-app.engine('.hbs', exphbs ({ defaultLayout: 'main', extname: '.hbs' }))
+const { formatDate, truncate, stripTags, editIcon } = require('./helpers/hbs')
+
+app.engine('.hbs', exphbs ({helpers:{
+     formatDate, truncate, stripTags, editIcon 
+    },
+    defaultLayout: 'main',
+    extname: '.hbs' 
+}))
 
 app.set('view engine', '.hbs')
 
@@ -43,14 +66,21 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
+// Set global var
+app.use(function(req, res, next) {
+    res.locals.user = req.user || null
+    next();
+})
+
 //Static Folder
 app.use(express.static(path.join(__dirname, 'public')))
 
 
 //Routes
+app.use('/stories',require('./routes/stories'))
 app.use('/', require('./routes/index'))
 app.use('/auth',require('./routes/auth'))
-app.use('/stories',require('./routes/stories'))
+
 
 app.listen(PORT, () =>{
     console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${PORT}`)

@@ -7,32 +7,37 @@
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" 
         integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" 
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
     <link rel="stylesheet" href="/css/style.css" type="text/css">
-    <title>StoryBooks</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"> 
+
+    <title>Diary</title>
 </head>
 
 <body>
+    <canvas id="canvas" style="position: absolute; z-index: -1"> </canvas>
     {{> _header}}
     {{>_btn}}
     <div class="container">
         {{{body}}}
     </div>  
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.16.2/ckeditor.js" 
-    integrity="sha512-bGYUkjDyyOMGm3ASzq3zRaWZ4CONNH1wAYMFch/Z0ASZrsg722SeRsX0FPPRZjTuJrqIMbB9fvY0LEMzyHeyeQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>    
     <script>
 
         M.Sidenav.init(document.querySelector('.sidenav'))
         M.FormSelect.init(document.querySelector('#status'))
-        CKEDITOR.replace('body', {
-            plugins: 'wysiwygarea, toolbar, basicstyles, links'
-        })
-    </script>
-
+        ClassicEditor
+            .create( document.querySelector( '#body' ) )
+            .then( editor => {
+                    console.log( editor );
+            } )
+            .catch( error => {
+                    console.error( error );
+            } );
+    </script> 
+   
 </body>
 
 </html>

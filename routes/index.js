@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {ensureAuth, ensureUser} = require('../middleware/auth2')
 const Story = require('../models/StoryModel')
+var User = require('../models/userSchema');
 
 //LOGIN PAGE
 router.get('/', ensureUser, (req,res) => {

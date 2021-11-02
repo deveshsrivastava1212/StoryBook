@@ -8,11 +8,26 @@ p{
     text-align: center;
 }
 
-/* .fa-book-reader:hover:before {
-    content: attr(data-hover);
-    -webkit-transform: translate(-150%,0);
-    -moz-transform: translate(-150%,0);
-    -ms-transform: translate(-150%,0);
-    -o-transform: translate(-150%,0);
-    transform: translate(-150%,0);
+/* .halfway-fab{
+    font-size:16px !important;
 } */
+.fa-small{
+    font-size: 16px !important; 
+}
+.fas{
+    size:10px !important;
+}
+.btn-float{
+    size:20px !important; 
+    float:left;
+    margin-right: 10px;
+}
+
+.img-small{
+    width:180px;
+}
+
+.nav-wrapper{
+    text-align: center;
+    font-size:30px;
+}
