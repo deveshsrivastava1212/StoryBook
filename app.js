@@ -15,7 +15,7 @@ dotenv.config({path: './config/config.env'})
 
 //passport Config
 require('./config/passport')(passport)
-const PORT = process.env.PORT || 3000
+const port = process.env.PORT || 3000;
 connect_DB()
 
 const app = express();
@@ -82,7 +82,7 @@ app.use('/', require('./routes/index'))
 app.use('/auth',require('./routes/auth'))
 
 
-app.listen(PORT, () =>{
-    console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${PORT}`)
-    console.log(`URL is: http://localhost:${PORT}`)
+app.listen(port, () =>{
+    console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${port}`)
+    console.log(`URL is: http://localhost:${port}`)
 })
