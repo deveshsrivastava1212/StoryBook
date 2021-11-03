@@ -34,10 +34,7 @@ app.use(methodOverride(function (req, res) {
     }
 }))
 
-if (process.env.NODE_ENV == 'development') {
-    app.use(morgan('dev'))
-}
-
+app.use(morgan('dev'))
 
 //handlebars
 const { formatDate, truncate, stripTags, editIcon } = require('./helpers/hbs')
@@ -83,6 +80,6 @@ app.use('/auth',require('./routes/auth'))
 
 
 app.listen(port, () =>{
-    console.log(`Server is running in ${process.env.NODE_ENV} mode on port ${port}`)
+    console.log(`Server is running on port ${port}`)
     console.log(`URL is: http://localhost:${port}`)
 })
