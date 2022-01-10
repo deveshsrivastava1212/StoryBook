@@ -10,13 +10,13 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
     <link rel="stylesheet" href="/css/style.css" type="text/css">
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"> 
+    <link rel="shortcut icon" href="img/favicon1.ico" type="image/x-icon"> 
 
     <title>Diary</title>
 </head>
 
 <body>
-    <canvas id="canvas" style="position: absolute; z-index: -1"> </canvas>
+    
     {{> _header}}
     {{>_btn}}
     <div class="container">
@@ -28,14 +28,6 @@
 
         M.Sidenav.init(document.querySelector('.sidenav'))
         M.FormSelect.init(document.querySelector('#status'))
-        ClassicEditor
-            .create( document.querySelector( '#body' ) )
-            .then( editor => {
-                    console.log( editor );
-            } )
-            .catch( error => {
-                    console.error( error );
-            } );
     </script> 
    
 </body>
